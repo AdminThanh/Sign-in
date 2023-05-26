@@ -2,6 +2,7 @@ import "./Signin.scss";
 import { Row, Col } from "antd";
 import FormSignin from "./Components/FormSignin";
 import FormInfo from "./Components/FormInfo";
+import { Link } from "react-router-dom";
 
 const Signin = () => {
   // Customer feedback data
@@ -31,7 +32,7 @@ const Signin = () => {
               <h3>Sign in</h3>
             </div>
             <div className="desc">
-              <p>Have an account?</p>
+              <p>Have an account?<Link to={'/'}  className="register">Register</Link></p>
             </div>
 
             <FormSignin skills={skills} />
