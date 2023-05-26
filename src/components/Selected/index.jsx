@@ -11,14 +11,21 @@ const Selected = (props) => {
     setInputValue(e.target.value);
   };
 
+  const handleChangeSkill = () => {
+    if (inputValue) {
+      setListSkill([...listSkill, inputValue.trim()]);
+      setInputValue("");
+    }
+  };
   const handleInputKeyDown = (e) => {
     if (e.key === "Enter" || e.key === ",") {
       e.preventDefault();
-      if (inputValue) {
-        setListSkill([...listSkill, inputValue.trim()]);
-        setInputValue("");
-      }
+      handleChangeSkill();
     }
+  };
+
+  const handleInputBlur = () => {
+    handleChangeSkill();
   };
 
   const handleTagClose = (removedTag) => {
@@ -32,6 +39,7 @@ const Selected = (props) => {
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleInputKeyDown}
+        onBlur={handleInputBlur}
         placeholder={text}
       />
       <div className="list_skill">
